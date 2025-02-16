@@ -6,7 +6,7 @@ const MapScreen = ({ route }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 1000); // Slightly longer for a smoother transition
+    setTimeout(() => setLoading(false), 800); // Animasi loading lebih smooth
   }, []);
 
   const { user } = route.params;
@@ -16,8 +16,8 @@ const MapScreen = ({ route }) => {
     () => ({
       latitude: parseFloat(lat),
       longitude: parseFloat(lng),
-      latitudeDelta: 0.01,
-      longitudeDelta: 0.01,
+      latitudeDelta: 20, // Zoom optimal agar lebih luas tapi detail
+      longitudeDelta: 20,
     }),
     [lat, lng]
   );
@@ -28,16 +28,16 @@ const MapScreen = ({ route }) => {
         <View style={styles.loadingContainer}>
           <ActivityIndicator
             size="large"
-            color="#6200EE"
+            color="#FF9800"
           />
-          <Text style={styles.loadingText}>Loading Map...</Text>
+          <Text style={styles.loadingText}>Memuat Peta...</Text>
         </View>
       ) : (
         <MapView
           provider={PROVIDER_GOOGLE}
           style={styles.map}
           initialRegion={initialRegion}
-          customMapStyle={mapDarkStyle} // Custom styling for better UI
+          customMapStyle={mapRealisticStyle} // Warna lebih natural & colorful
         >
           <Marker
             title={city}
@@ -51,34 +51,53 @@ const MapScreen = ({ route }) => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#F5F5F5" },
+  container: { flex: 1, backgroundColor: "#E3F2FD" }, // Warna latar lebih soft
   map: { flex: 1 },
   loadingContainer: { flex: 1, justifyContent: "center", alignItems: "center" },
-  loadingText: { marginTop: 10, fontSize: 16, color: "#6200EE", fontWeight: "bold" },
+  loadingText: { marginTop: 10, fontSize: 16, color: "#FF9800", fontWeight: "bold" },
 });
 
-const mapDarkStyle = [
+// Tema peta lebih realistis & beragam untuk setiap benua
+const mapRealisticStyle = [
   {
-    elementType: "geometry",
-    stylers: [{ color: "#212121" }],
+    featureType: "landscape.natural.landcover",
+    elementType: "geometry.fill",
+    stylers: [{ color: "#DCE775" }], // Warna hijau lebih alami untuk daratan
   },
   {
-    elementType: "labels.text.fill",
-    stylers: [{ color: "#ffffff" }],
-  },
-  {
-    elementType: "labels.text.stroke",
-    stylers: [{ color: "#212121" }],
+    featureType: "landscape.natural.terrain",
+    elementType: "geometry.fill",
+    stylers: [{ color: "#A5D6A7" }], // Warna lebih soft untuk pegunungan
   },
   {
     featureType: "water",
-    elementType: "geometry",
-    stylers: [{ color: "#0f252e" }],
+    elementType: "geometry.fill",
+    stylers: [{ color: "#42A5F5" }], // Warna air lebih biru natural
   },
   {
     featureType: "road",
-    elementType: "geometry",
-    stylers: [{ color: "#383838" }],
+    elementType: "geometry.fill",
+    stylers: [{ color: "#F9A825" }], // Jalan lebih kontras dengan warna emas
+  },
+  {
+    featureType: "poi.park",
+    elementType: "geometry.fill",
+    stylers: [{ color: "#81C784" }], // Warna hijau taman lebih alami
+  },
+  {
+    featureType: "administrative.country",
+    elementType: "geometry.stroke",
+    stylers: [{ color: "#8E24AA" }], // Garis batas negara lebih jelas
+  },
+  {
+    featureType: "road.highway",
+    elementType: "geometry.fill",
+    stylers: [{ color: "#FFEB3B" }], // Jalan tol lebih terlihat
+  },
+  {
+    featureType: "administrative.province",
+    elementType: "labels.text.fill",
+    stylers: [{ color: "#5E35B1" }], // Nama provinsi lebih readable
   },
 ];
 
