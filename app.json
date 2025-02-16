@@ -11,7 +11,10 @@
     },
     "android": {
       "package": "com.fr7.exam",
-      "permissions": ["ACCESS_FINE_LOCATION", "ACCESS_COARSE_LOCATION"],
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION"
+      ],
       "config": {
         "googleMaps": {
           "apiKey": "AIzaSyBhvcAIRW9qHUF3Hr4kGl_etlDIf0X-jLQ"
@@ -22,6 +25,11 @@
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "0c6a11a0-f0a8-4d00-9586-c5cc9e43878b"
+      }
     }
   }
 }
