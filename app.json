@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "Profile Users",
+    "slug": "profile-users",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "web": {
+      "favicon": "./assets/favicon.ico"
+    },
+    "android": {
+      "package": "com.fr7.exam",
+      "permissions": ["ACCESS_FINE_LOCATION", "ACCESS_COARSE_LOCATION"],
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyBhvcAIRW9qHUF3Hr4kGl_etlDIf0X-jLQ"
+        }
+      }
+    },
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    }
+  }
+}
