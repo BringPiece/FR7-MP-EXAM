@@ -2,7 +2,7 @@
   "expo": {
     "name": "Profile Users",
     "slug": "fr7-mobile-programming-exam",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "owner": "fr7",
     "icon": "./assets/icon.png",
