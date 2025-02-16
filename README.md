@@ -48,8 +48,69 @@ Dokumentasi ini menjelaskan cara menggunakan aplikasi menggunakan **Snack Expo (
 
 ### Langkah-langkah Penggunaan Expo Lokal dengan EAS
 
-1. **Instalasi Expo CLI**
-   Pastikan Anda telah menginstal **Expo CLI** secara global di mesin lokal:
+1. **Instalasi Expo CLI dan EAS CLI**  
+   Pastikan Anda telah menginstal **Expo CLI** dan **EAS CLI** secara global di mesin lokal:
+
    ```bash
-   npm install -g expo-cli
+   npm install -g expo-cli eas-cli
    ```
+
+2. **Inisialisasi Proyek Expo**  
+   Jika belum memiliki proyek, buat proyek baru dengan perintah berikut:
+
+   ```bash
+   expo init my-project
+   cd my-project
+   ```
+
+3. **Login ke Expo**  
+   Pastikan Anda masuk ke akun Expo sebelum menggunakan fitur EAS:
+
+   ```bash
+   eas login
+   ```
+
+4. **Konfigurasi EAS Build**  
+   Inisialisasi proyek untuk menggunakan EAS Build:
+
+   ```bash
+   eas init
+   ```
+
+   Ini akan membuat file `eas.json` yang berisi konfigurasi untuk build aplikasi.
+
+5. **Menjalankan Aplikasi Secara Lokal**  
+   Untuk menjalankan aplikasi di emulator atau perangkat fisik:
+
+   ```bash
+   expo start
+   ```
+
+6. **Membangun APK/IPA dengan EAS**  
+   Jika ingin membangun file APK untuk Android atau IPA untuk iOS, gunakan perintah berikut:
+
+   ```bash
+   eas build --platform android  # Untuk Android
+   eas build --platform ios  # Untuk iOS
+   ```
+
+   Build ini akan berjalan di cloud Expo dan menghasilkan file `.apk` atau `.ipa` yang siap diinstal.
+
+7. **Mengunduh dan Menginstal Hasil Build**  
+   Setelah build selesai, unduh file APK dan instal di perangkat Anda.
+
+### Kelebihan dan Kekurangan Expo Lokal dengan EAS
+
+| **Kelebihan**                                        | **Kekurangan**                              |
+| ---------------------------------------------------- | ------------------------------------------- |
+| Memungkinkan pengembangan offline.                   | Membutuhkan pengaturan lingkungan lokal.    |
+| Build aplikasi dapat dikonfigurasi untuk produksi.   | Proses build memerlukan koneksi internet.   |
+| Mendukung fitur kustom yang tidak ada di Snack Expo. | Memerlukan akun Expo untuk mengelola build. |
+
+---
+
+## 3. Kesimpulan
+
+Expo menyediakan dua metode utama untuk membangun aplikasi: **Snack Expo (online)** dan **Expo lokal dengan EAS**. Jika Anda ingin pengembangan yang cepat tanpa setup perangkat, gunakan **Snack Expo**. Namun, jika membutuhkan **kontrol penuh atas build aplikasi**, gunakan **Expo lokal dengan EAS**.
+
+Dengan memahami kedua metode ini, Anda dapat memilih cara terbaik untuk mengembangkan dan mendistribusikan aplikasi sesuai kebutuhan proyek Anda.
